@@ -1,0 +1,4 @@
+module PIHTest where
+
+noop :: () -> ()
+noop x = ()

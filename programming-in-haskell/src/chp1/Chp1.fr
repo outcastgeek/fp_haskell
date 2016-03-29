@@ -1,0 +1,20 @@
+module Chp1 where
+
+qsort [] = []
+qsort (x:xs) = qsort ys ++ [x] ++ qsort zs
+               where
+                 ys = [a | a <- xs, a <= x]
+                 zs = [b | b <- xs, b > x]
+
+toPrintableList = map show
+
+printList lst = mapM_ putStrLn $ toPrintableList lst
+
+main :: IO ()
+main = do
+  putStrLn "Quick Sorting..."
+  let lst = [4,234,5,12,8]
+  putStrLn "\nOriginal List:"
+  printList lst
+  putStrLn "\nSorted List:"
+  printList $ qsort lst
