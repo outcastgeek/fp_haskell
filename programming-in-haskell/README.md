@@ -19,6 +19,7 @@ You can also package up the Frege code and its runtime:
 That produces a JAR file which you can run:
 
     java -cp target/programming-in-haskell-0.1.0-SNAPSHOT-standalone.jar Fibonacci
+    [Using Emacs for Haskell Development](https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md)
 
 ## License
 

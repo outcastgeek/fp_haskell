@@ -1,5 +1,7 @@
 module Chp2 where
 
+import Data.List
+
 double x = x + x
 
 --quadruple x = double (double x)
@@ -19,8 +21,8 @@ main = do
   putStrLn "tail [1, 2, 3, 4, 5]"
   putStrLn . show $ tail [1, 2, 3, 4, 5]
   
-  putStrLn "[1, 2, 3, 4, 5] !! 2" -- TODO: Fix this!!
-  --putStrLn . show $ [1, 2, 3, 4, 5] !! 2
+  putStrLn "[1, 2, 3, 4, 5] !! 2"
+  putStrLn . show $ [1, 2, 3, 4, 5] !! 2
 
   putStrLn "take 3 [1, 2, 3, 4, 5]"
   putStrLn . show $ take 3 [1, 2, 3, 4, 5]
