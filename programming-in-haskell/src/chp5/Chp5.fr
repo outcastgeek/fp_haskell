@@ -1,5 +1,7 @@
 module Chp5 where
 
+printResult = putStrLn . show
+
 squares1and5 :: [Int]
 squares1and5 = [x^2 | x <- [1..5]]
 
@@ -21,29 +23,53 @@ longueur xs = sum [1 | _ <- xs]
 factors :: Int -> [Int]
 factors n = [x | x <- [1..n], n `mod` x == 0]
 
+prime :: Int -> Bool
+prime n = factors n == [1, n]
+
+primes :: Int -> [Int]
+primes n = [x | x <- [2..n], prime x]
+
+find :: Eq a => a -> [(a, b)] -> [b]
+find k t = [v | (k', v) <- t, k == k']
+
+pairs :: [a] -> [(a, a)]
+pairs xs = zip xs (tail xs)
+
 main :: IO()
 main = do
   putStrLn "List Comprehensions..."
 
   putStrLn "[x^2 | x <- [1..5]]"
-  putStrLn . show $ squares1and5
+  printResult $ squares1and5
 
   putStrLn "[(x, y) | x <- [1,2,3], y <- [4,5]]"
-  putStrLn . show $ possiblePairs
+  printResult $ possiblePairs
 
   putStrLn "[(x,y) | x <- [1..9], y <- [x..9]]"
-  putStrLn . show $ allPossiblePairsOfList
+  printResult $ allPossiblePairsOfList
 
   putStrLn "someConcat xss = [x | xs <- xss, x <- xs] of [[1..3],[4..9]]"
-  putStrLn . show $ someConcat [[1..3],[4..9]]
+  printResult $ someConcat [[1..3],[4..9]]
 
   putStrLn "firsts ps = [x | (x,_) <- ps] of [(1,5), (5,6), (7,8)]"
-  putStrLn . show $ firsts [(1,5), (5,6), (7,8)]
+  printResult $ firsts [(1,5), (5,6), (7,8)]
 
   putStrLn "longueur xs = sum [1 | _ <- xs] of [435..1083470]"
-  putStrLn . show $ longueur [435..1083470]
+  printResult $ longueur [435..1083470]
 
   putStrLn "factors n = [x | x <- [1..n], n `mod` x == 0] of 432"
-  putStrLn . show $ factors 432
+  printResult $ factors 432
+
+  putStrLn "prime 15"
+  printResult $ prime 15
+
+  putStrLn "prime 7"
+  printResult $ prime 7
+
+  putStrLn "primes 40"
+  printResult $ primes 40
+
+  putStrLn "find 'b' [('a', 1), ('b', 2) ('c', 3) ('b', 4)]"
+  printResult $ find 'b' [('a', 1), ('b', 2), ('c', 3), ('b', 4)]
 
 
